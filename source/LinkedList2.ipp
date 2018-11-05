@@ -18,13 +18,23 @@ template<class T>
 			this->head->prev = nullptr;
 			this->head->next = nullptr;
 			this->count++;
-			cout << "\n" << tail->value << "  ";
+
 		}
 		else
 		{
+			if (position->next != nullptr) 
+			{
+
+				position->next->prev = val;
+			}
+			
+			val->prev  = position;
 			val->next = position->next;
+
+			
 			position->next = val;
-			val->prev = position;
+			
+			
 			if (val->next == nullptr) {
 				this->tail = val;
 			}
@@ -98,41 +108,43 @@ template<class T>
 
 	template<class T>
 	void LinkedList2<T>::dell(T val) {
-		Node2<T>*H = this->head;
-		while (H != nullptr) 
+
+		Node2<T>*H = this->find(val);
+		if (H->prev == nullptr)
 		{
-			if(H->value==val)
+			if(H->next==nullptr)
 			{
-				if(H->prev==nullptr)
-				{
-					this->head = this->head->next;
-					if (this->head != nullptr)
-					{
-						this->head->prev = nullptr;
-					}
-					this->count--;
-					return;
-				}
-				if (H -> prev != nullptr) 
-				{
-					H->prev->next = H->next;
-					H->next->prev = H->prev;
-					if(H==nullptr)
-					{
-						this->tail = H->prev;
-					}
-					this->count--;
-					return;
-				}
+				this->head = nullptr;
+				this->tail = nullptr;
+				this->count = 0;
+				return;
 			}
-			H = H->next;
+			this->head = this->head->next;
+			
+		
+				this->head->prev = nullptr;
+			this->count--;
+			return;
 		}
+		if(H->next==nullptr)
+		{
+	
+			this->tail = this->tail->prev;
+			this->tail->next = nullptr;
+			this->count--;
+			return;
+		}
+		if (H->prev != nullptr)
+		{
+
+			H->prev->next = H->next;
+			H->next->prev = H->prev;
+
+			this->count--;
+			return;
 
 
-
-
-
-
+		}
 
 
 		
