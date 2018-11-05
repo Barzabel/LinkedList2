@@ -1,17 +1,15 @@
-#include"Node2.cpp"
-#include<iostream>
-using namespace std;
+#pragma once
 
 
 template<class T>
-class  LinkedList2{
-public:
-	LinkedList2():head(nullptr), tail( nullptr), count(0)
+	LinkedList2<T>::LinkedList2():head(nullptr), tail( nullptr), count(0)
 	{
 	
 
 	}
-	void add_in_position(Node2<T>*position,Node2<T>*val)
+
+	template<class T>
+	void LinkedList2<T>::add_in_position(Node2<T>*position,Node2<T>*val)
 	{
 		if (this->head == nullptr)
 		{
@@ -34,8 +32,8 @@ public:
 		}
 	}
 
-
-	void add_in_tail(Node2<T>*val)
+	template<class T>
+	void LinkedList2<T>::add_in_tail(Node2<T>*val)
 	{
 		if(this->head==nullptr)
 		{
@@ -58,8 +56,8 @@ public:
 		}
 	}
 
-
-	void add_in_head(Node2<T>*val) 
+	template<class T>
+	void LinkedList2<T>::add_in_head(Node2<T>*val)
 	{
 		if (this->head == nullptr)
 		{
@@ -84,7 +82,9 @@ public:
 
 	}
 
-	Node2<T>* find(T val) {
+
+	template<class T>
+	Node2<T>* LinkedList2<T>::find(T val) {
 		Node2<T>(*H) = this->head;
 		while (H != nullptr) {
 			if (H->value == val)
@@ -96,8 +96,8 @@ public:
 		return nullptr;
 	}
 
-
-	void dell(T val) {
+	template<class T>
+	void LinkedList2<T>::dell(T val) {
 		Node2<T>*H = this->head;
 		while (H != nullptr) 
 		{
@@ -138,7 +138,8 @@ public:
 		
 	}
 
-	void printn()
+	template<class T>
+	void LinkedList2<T>::printn()
 	{
 		Node2<T>*H = this->head;
 		while (H != nullptr)
@@ -152,8 +153,8 @@ public:
 	}
 
 
-
-	void printe() {
+	template<class T>
+	void LinkedList2<T>::printe() {
 		Node2<T>*H = this->tail;
 		while (H!=nullptr)
 		{
@@ -167,24 +168,21 @@ public:
 
 	}
 
-
-	unsigned int getsize() {
+	template<class T>
+	unsigned int LinkedList2<T>::getsize() {
 		return this->count;
 	}
 
-
-	Node2<T>* gethead() 
+	template<class T>
+	Node2<T>* LinkedList2<T>::gethead()
 	{
 		return this->head;
 	}
-	Node2<T>* gettail() 
+
+	template<class T>
+	Node2<T>* LinkedList2<T>::gettail()
 	{
 
 		return this->tail;
 	}
 
-private:
-	Node2<T>*head;
-	Node2<T>*tail;
-	unsigned int count;
-};

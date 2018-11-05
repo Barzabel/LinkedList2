@@ -1,7 +1,10 @@
 #include<iostream>
-#include"LinkedList2.cpp"
 
 
+# pragma hdrstop
+#include"Node2.h"
+
+#include"LinkedList2.h"
 
 
 
@@ -11,6 +14,9 @@ using namespace std;
 
 
 int main() {
+
+
+
 
 	LinkedList2<int>*obg =new LinkedList2<int>;
 
