@@ -13,20 +13,24 @@ template<class T>
 	{
 		if (this->head == nullptr)
 		{
-			this->head = val;
-			this->tail = val;
-			this->head->prev = nullptr;
-			this->head->next = nullptr;
-			this->count++;
+			this->add_in_head(val);
+			
 
 		}
 		else
-		{
+		{	
+			if (position->next == nullptr)
+			{
+				this->add_in_tail(val);
+				return;
+			}
+
 			if (position->next != nullptr) 
 			{
 
 				position->next->prev = val;
 			}
+			
 			
 			val->prev  = position;
 			val->next = position->next;
@@ -35,9 +39,7 @@ template<class T>
 			position->next = val;
 			
 			
-			if (val->next == nullptr) {
-				this->tail = val;
-			}
+			
 			this->count++;
 		}
 	}
