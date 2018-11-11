@@ -31,8 +31,8 @@ public:
 
 	void printn();
 	
-
-
+	void deltail();
+	void delhead();
 
 	void printe();
 
@@ -43,6 +43,9 @@ public:
 
 	Node2<T>* gettail();
 	
+	~LinkedList2();
+
+
 
 private:
 	Node2<T>*head;

@@ -119,13 +119,18 @@ template<class T>
 				this->head = nullptr;
 				this->tail = nullptr;
 				this->count = 0;
+
+				delete H;
 				return;
 			}
 			this->head = this->head->next;
 			
 		
-				this->head->prev = nullptr;
+			this->head->prev = nullptr;
 			this->count--;
+
+
+			delete H;
 			return;
 		}
 		if(H->next==nullptr)
@@ -134,6 +139,9 @@ template<class T>
 			this->tail = this->tail->prev;
 			this->tail->next = nullptr;
 			this->count--;
+
+
+			delete H;
 			return;
 		}
 		if (H->prev != nullptr)
@@ -143,6 +151,9 @@ template<class T>
 			H->next->prev = H->prev;
 
 			this->count--;
+
+
+			delete H;
 			return;
 
 
@@ -165,6 +176,66 @@ template<class T>
 	
 	
 	}
+
+	template<class T>
+	void LinkedList2<T>::deltail() {
+
+
+		if (this->head->next == nullptr) {
+
+
+			Node2<T>*del = this->tail;
+			this->head = nullptr;
+			this->tail = nullptr;
+			this->count--;
+
+
+			delete del;
+			return;
+		}else{
+
+		Node2<T>*del = this->tail;
+		
+		this->tail = this->tail->prev;
+		this->tail->next = nullptr;
+		this->count--;
+
+		delete del;
+		return;
+		}
+
+	}
+
+
+
+	template<class T>
+	void LinkedList2<T>::delhead() {
+
+
+		if (this->head->next == nullptr) {
+			Node2<T>*del = this->head;
+
+
+			this->head = nullptr;
+			this->tail = nullptr;
+			this->count--;
+
+			delete del;
+			return;
+		}
+		else {
+			Node2<T>*del = this->head;
+			this->head = this->head->next;
+			this->head->prev = nullptr;
+			this->count--;
+
+			delete del;
+			return;
+		}
+
+	}
+
+
 
 
 	template<class T>
@@ -200,3 +271,18 @@ template<class T>
 		return this->tail;
 	}
 
+	template<class T>
+	LinkedList2<T>::~LinkedList2() {
+		Node2<T> *H = this->head;
+		Node2<T> *del;
+		while (H != nullptr) {
+			del = H;
+
+
+			H = H->next;
+			delete del;
+		}
+
+
+
+	}
